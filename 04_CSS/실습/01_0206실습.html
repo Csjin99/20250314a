@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        div,form, input {
+            box-sizing: border-box;
+        }
+
+
+        ul, li, ol {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /*화면 전체를 감싸는 div*/
+        .wrap {
+            margin: 0 auto;
+            width: 60%;
+            height: 900px;
+
+        }
+
+        .wrap>div {
+            width: 100%;
+        }
+
+        #footer, #aside {
+            height: 20%;
+        }
+
+        #header {
+            margin-top: 10px;
+            height: 15%;
+            border: 1px solid rgb(219, 216, 216);
+        }
+
+        #navigator {
+            height: 5%;
+            border: 1px solid rgb(219, 216, 216);
+        }
+
+        #content {
+            height: 55%;
+            
+        }
+
+        #header>div, #content>div, #aside>div {
+            height: 100%;
+            float: left;
+        }
+
+        
+        #header_1 {
+            width: 20%;
+        }
+
+        #header_2 {
+            width: 65%;
+        }
+
+        #header_3 {
+            width: 15%;
+        }
+
+        
+        #content_1 {
+            margin-right: 1%;
+            width: 70%;
+            
+        }
+        
+  
+
+        #content_3 {
+            width: 29%;
+        }
+
+        /*검색*/
+
+        #search {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        #search>form {
+            margin: auto;
+            width: 80%;
+            height: 30px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            /*사방으로 가려고해서 결국 중앙정렬*/
+        }
+
+        #search>form input {
+            height: 100%;
+            float: left;
+        }
+
+        #search>form input[type="text"] {
+            width: calc(100% - 80px);
+        }
+
+        #search>form input[type="submit"] {
+            width: 80px;
+        }
+
+        #submit-btn {
+            background-image: url('/실습문제 이미지/search.png');
+            background-repeat: no-repeat;
+            background-size: 35%;
+            width: 60px;
+            height: 29px;
+            border: 0px;
+            cursor:pointer;
+            outline: 0;
+            background-position: center;
+
+
+
+        }
+
+        #logoim {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /*상단 메뉴바 */
+
+        #manu {
+            margin: 0 auto;
+            padding: 0 auto;
+            width: 100%;
+            height: 100%;
+            
+        }
+
+        #navi {
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #navi>li {
+            float: left;
+            text-align: center;
+            height: 100%;
+        }
+
+        #navi a {
+            font-size: 16px;
+            font-weight: 900;
+            width: 100%;
+            height: 100%;
+            display: block;
+            line-height: 36px;
+            color: rgb(143, 140, 140);
+        }
+
+        #navi a:hover {
+            color: rgb(0, 0, 0);
+            scale: 1.08;
+        }
+
+        /* 배너 */
+        #banner{
+            height: 25%;
+            width: 100%;
+            border: 1px solid rgb(219, 216, 216);
+        }
+        /*뉴스*/
+        #news{
+            border: 1px solid rgb(219, 216, 216);
+            height: 10%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #newsh{
+            margin: 0;
+            width: 75%;
+        }
+
+
+        #newsc{
+            height: 100%;   
+        }
+
+        #newsc>li {
+            float: left;
+            text-align: center;
+            height: 100%;
+            width: 50px;
+        }
+
+        #newsc a {
+            font-size: 15px;
+            font-weight: 900;
+            width: 100%;
+            height: 100%;
+            display: block;
+            line-height: 45px;
+            color: rgb(143, 140, 140);
+        }
+        #newsc a:hover{
+            color: blue;
+            scale: 1.08;
+        }
+
+        /*자동차 광고*/
+        #car{
+            border: 1px solid rgb(219, 216, 216);
+            margin: 0 auto;
+            padding: 0;
+            height: 55.5%;
+            display: block;
+            justify-content: center;
+        }
+
+        /*로그인 폼*/
+        
+        #login-form{
+            margin: 0%;
+            border: 1px solid rgb(219, 216, 216);
+            width: 100%;
+            height: 25%;
+        }
+        #login-form>*{
+            width: 100%;
+        }
+        #login-form-input{
+            height: 80%;
+        }
+        #login-form-input>*{
+            height:  100%;
+            float: left;
+        }
+        #login-form-input-id-pwd{
+            width: 65%;
+        }
+        #login-form-input-id-pwd>input{
+            width: 100%;
+            height: 50%;
+        }
+        #login-input-btn{
+            width: 35%;
+        }
+        #login-input-btn>input[type="submit"]{
+            width: 100%;
+            height: 100%;
+        }
+        #login-from-etc{
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+        #login-from-etc>a{
+            font-size: 13px;
+            font-weight: 900;
+            
+        }
+
+        #shoping{
+            border: 1px solid rgb(219, 216, 216);
+            height: 70.2%;
+        }
+
+        /*푸터*/
+
+        #footer{
+            border: 1px solid rgb(219, 216, 216);
+            width: 100%;
+            height: 20%;
+        }
+        #footer>div{
+            width: 100%;
+        }
+        #footer_1{
+            margin-left: 10px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+        }
+        #footer_1 div{
+            display: inline-block;
+            width: 100%;
+            max-width: 1130px;
+        }
+        #footer_1 a{
+            font-size: 16px;
+            font-weight: 900;
+        }
+        #footer_1 a:hover{
+            color: #FA1800;
+        }
+
+        #footer_2{
+            height: calc(100% - 55px);
+            background: #fefefe6c;
+        }
+
+        #footer_2>p{
+            padding: 0;
+            margin: 0;
+            width: 100;
+            max-width: 1130px;
+            margin-left: 10px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        #footer_2>p:nth-child(1){
+            font-size: 13px;
+            padding-bottom: 10px;
+        }
+
+        #footer_2>p:nth-child(3){
+            font-size: 11px;
+            padding-top: 10px;
+        }
+        
+        #last{
+            height: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #last p{
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div id="header">
+            <div id="header_1">
+                <div id="logoim">
+                    <img src="/실습문제 이미지/logo.PNG" alt="로고" width="50%">
+                </div>
+
+            </div>
+            <div id="header_2">
+                <div id="search">
+                    <form action="">
+                        <input type="text" placeholder="검색어를 입력하세요.">
+                        <input type="submit" value="" id="submit-btn">
+                    </form>
+                </div>
+            </div>
+            <div id="header_3"></div>
+        </div>
+        <br>
+
+        <div id="navigator">
+
+            <div id="manu">
+                <ul id="navi">
+                    <li><a href="">교육과정</a></li>
+                    <li><a href="">교육원소개</a></li>
+                    <li>
+                        <a href="">취업지원센터</a>
+                    </li>
+                    <li><a href="">산학연계</a>
+                    </li>
+                    <li><a href="">상담센터</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <br>
+
+        <div id="content">
+            <div id="content_1">
+                <div id="banner">
+                    <img src="/실습문제 이미지/banner.PNG" alt="" width= "100%" height= "100%">
+                </div>
+                <br>
+                <div id="news">
+                    <h4 id="newsh">안녕하세요 여기는 공지사항 제목이 들어오는 자리입니다.</h4>
+
+                    <ul id="newsc">
+                        <li><a href="">경제</a></li>
+                        <li><a href="">연예</a></li>
+                        <li><a href="">사회</a></li>
+                    </ul>
+
+                </div>
+                <br>
+                <div id="car">
+                    <img src="/실습문제 이미지/car.PNG" alt="" width="100%" height="100%">
+                </div>
+            </div>
+            
+            <div id="content_3">
+                <div id="login-form">
+                    <form action="" id="login-form-input">
+                        
+                        <div id="login-form-input-id-pwd">
+                            <input type="text " placeholder="아이디를 입력해주세요.">
+                            <input type="password" placeholder="비밀번호를 입력해주세요.">
+                        </div>
+
+                        <div id="login-input-btn">
+                            <input type="submit" value="로그인">
+                        </div>
+            
+                    </form>
+
+                    <div id="login-from-etc">
+                        <a href="">회원가입</a> |
+                        <a href="">IP/PWD 찾기</a> |
+                        <a href="">회원가입</a>
+                    </div>
+                </div>
+                <br>
+
+                <div id="shoping">
+                    <img src="/실습문제 이미지/shopping.PNG" alt="" width="100%" height="100%">
+                </div>
+            </div>
+
+        </div>
+        <br>
+        <div id="footer">
+            <div id="footer_1">
+                <div>
+                    <a href="">이용약관</a> ｜
+                    <a href="">개인정보처리방침</a> ｜   
+                    <a href="">인재 채용</a> ｜
+                    <a href="">고객센터</a>
+                </div>
+            </div>
+
+            <div id="footer_2">
+                <p>
+                    강남지원 1관 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F,3F,4F,5F,6F <br>
+                    강남지원 2관 : 서울특별시 강남구 테헤란로10길 9 그랑프리 빌딩 4F,5F,7F <br>
+                    강남지원 3관 : 서울특별시 강남구 테헤란로 130 호산빌딩 5F,6F <br>
+                </p>
+                <div id="last">
+                    <p>Copyright © 1998-2025 KH Information Educational Institute All Right Reserved</p>
+                </div>
+                
+    
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

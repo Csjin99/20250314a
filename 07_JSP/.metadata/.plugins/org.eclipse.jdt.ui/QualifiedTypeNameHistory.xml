@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="javax.swing.text.View"/>
+    <fullyQualifiedTypeName name="com.kh.common.JDBCTemplate"/>
+    <fullyQualifiedTypeName name="org.apache.commons.fileupload2.jakarta.JakartaServletFileUpload"/>
+    <fullyQualifiedTypeName name="org.apache.commons.fileupload2.core.DiskFileItemFactory"/>
+    <fullyQualifiedTypeName name="org.apache.commons.fileupload2.core.FileItem"/>
+    <fullyQualifiedTypeName name="com.kh.board.model.vo.Board"/>
+    <fullyQualifiedTypeName name="java.nio.charset.Charset"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+</qualifiedTypeNameHistroy>

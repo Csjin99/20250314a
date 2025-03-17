@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid black;
+            width: 500px;
+        }
+        
+        #area1{
+            border: 1px solid black;
+            width: 400px;
+            height: 150px;
+        }
+        textarea{
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <fieldset class="area">
+            <legend>구매정보</legend>
+            <ul >
+                <li>구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요." ></li>
+                <li>상품명 : <input type="text" placeholder="구매 상품명을 입력하세요."></li>
+                <li>가격 : <input type="number" placeholder="구매가격을 입력하세요."></li>
+                <li>구매 수량 : <input type="number" onchange="puynum()" id="bNum" placeholder="최소 10" min="10" max="100" step="10"></li>
+                <li>남품 등급 : <input type="range" min="1" max="9" step="2" value="1"></li>
+                <li>기타 사항 : <textarea id="imponation" ></textarea>
+            </ul>
+        </fieldset>
+        <br>
+        <input type="button" value="입력 값 출력하기" onclick="test()">
+
+        <br><br>
+        
+        <div id="area1"></div>
+
+    </form>
+
+    <script>
+        function test(){
+            let infor = document.querySelectorAll('ul>li');
+            let res = "" ;
+    
+            for(let get of infor){
+                let inputField = get.querySelector('input, textarea');
+                if(inputField) {
+                    res += get.innerText + " " + inputField.value + "<br>";
+                }
+            }
+    
+            document.getElementById('area1').innerHTML = res;
+        }
+
+        function puynum(){
+            let buynum = document.getElementById('bNum').value;
+
+            if(buynum < 10 || buynum > 100){
+                alert("구매수량 오입력")
+                document.getElementById('bNum').value = ' ';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

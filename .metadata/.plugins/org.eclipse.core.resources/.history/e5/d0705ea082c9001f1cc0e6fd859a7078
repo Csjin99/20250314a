@@ -1,0 +1,25 @@
+package e.array;
+
+import java.util.Scanner;
+
+public class D_Array_Copy {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int[] origin = {1,2,3,4,5};
+		
+		System.out.println("==원본배열 출력==");
+		for(int value : origin) {
+			System.out.print(value+ " ");
+		}
+		//단순하게 origin을 다시 대입시켜 copy배열 생성
+		int[] copy = origin;
+		System.out.println("==원본배열 출력==");
+		for(int value : origin) {
+			System.out.print(value+ " ");
+		}
+
+	}
+
+}

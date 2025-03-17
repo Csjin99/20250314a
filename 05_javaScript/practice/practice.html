@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            border: 1px solid black;
+            background: black;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h3>문제1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어라</h3>
+    <div id="div1"></div>
+
+    <input type="color" id="selectColor">
+    <button onclick="changecolor()">변경</button>
+
+    <script>
+       function changecolor(){
+        let divbox = document.getElementById('div1');
+        let color1 = document.getElementById('selectColor');
+        
+        console.log(color1.value);
+        divbox.style.background = color1.value;
+       }
+    </script>
+
+
+
+    <h3>문제2. 버튼에 따른 크기조절이 가능하게 만들어 보세요.</h3>
+    <div id="div2"></div>
+    <button onclick="changebox1()">50X50</button>
+    <button onclick="changebox2()">100X100</button>
+    <button onclick="changebox3()">200X200</button>
+
+    <script>
+        function changebox1(){
+            let div1 = document.getElementById('div2');
+
+            div1.style.width = '50px';
+            div1.style.height = '50px';
+
+        }
+
+        function changebox2(){
+            let div1 = document.getElementById('div2');
+
+            div1.style.width = '100px';
+            div1.style.height = '100px';
+            
+        }
+      
+
+        function changebox3(){
+            let div1 = document.getElementById('div2');
+
+            div1.style.width = '200px';
+            div1.style.height = '200px';
+            
+        }
+      
+      
+    </script>
+</body>
+</html>

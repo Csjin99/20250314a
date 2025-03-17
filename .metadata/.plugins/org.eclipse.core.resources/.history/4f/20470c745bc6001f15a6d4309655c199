@@ -1,0 +1,10 @@
+package a.basic;
+
+public class Output {
+	public static void main(String[] args) {
+		//코드를 사용하는 영역
+		
+		System.out.println("안녕하세여ㅛ");
+	}
+
+}

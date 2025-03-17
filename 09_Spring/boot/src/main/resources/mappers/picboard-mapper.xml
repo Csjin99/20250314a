@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kh.boot.mappers.BoardMapper">
+
+    <resultMap id="picboardResult" type="PicBoard">
+        <result column="PICBOARD_NO" property="picboardNo"/>
+        <result column="PICBOARD_TITLE" property="picboardTitle"/>
+        <result column="PICBOARD_WRITER" property="picboardWriter"/>
+        <result column="PICBOARD_CONTENT" property="picboardContent"/>
+        <result column="ORIGIN_NAME" property="originName"/>
+        <result column="CHANGE_NAME" property="changeName"/>
+        <result column="COUNT" property="count"/>
+        <result column="CREATE_DATE" property="createDate"/>
+        <result column="STATUS" property="status"/>
+
+    </resultMap>
+    <select id="selectPicBoardCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM PICBOARD
+        WHERE STATUS = 'Y'
+    </select>
+    <select id="selectPicBoardList" resultMap="picboardResult">
+        SELECT PICBOARD_NO,
+        PICBOARD_TITLE,
+        PICBOARD_WRITER,
+        ORIGIN_NAME,
+        CHANGE_NAME,
+        COUNT,
+        TO_CHAR(CREATE_DATE, 'YYYY-MM-DD') AS CREATE_DATE
+        FROM PICBOARD
+        WHERE STATUS = 'Y'
+        ORDER BY PICBOARD_NO DESC
+    </select>
+    <insert id="picinsertBoard">
+        INSERT INTO PICBOARD(
+        PICBOARD_NO,
+        PICBOARD_TITLE,
+        PICBOARD_WRITER,
+        PICBOARD_CONTENT,
+        ORIGIN_NAME,
+        CHANGE_NAME
+        ) VALUES (
+        SEQ_BNO.NEXTVAL,
+        #{picboardTitle},
+        #{picboardWriter},
+        #{picboardContent},
+        #{originName},
+        #{changeName}
+        )
+    </insert>
+</mapper>

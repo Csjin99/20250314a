@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 외부 라이브러리-->
+    <!--jQuery 3.7.1-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!--jQueryUI 1.14.1-->
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
+
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>jQuery</h1>
+
+    <h3>jquery 이벤트</h3>
+
+    <input type="submit" value="완료">
+
+    <script>
+        // $(":submit").mouseenter(function(){
+        //     $(this).val("제출하기");
+        // });
+
+        // $(":submit").mouseleave(function(){
+        //     $(this).val("완료");
+        // });
+
+        //hover(mouseenter시 실행할 함수, mouseleave실행할 함수)
+
+        $(":submit").hover(function(){
+            $(this).val("제출하기");
+        },function(){
+            $(this).val("완료");
+        })
+    </script>
+
+    <hr>
+
+    <div class="area" id="wrap">
+        <h6>클릭시 h6요소 추가</h6>
+    </div>
+
+
+    <script>
+        //방법1 이벤트 메서드 -> 동적으로 만들어진 요소에 이벤트 적용 안됨
+        // $("#wrap > h6").click(function(){
+        //     $("#wrap").append("<h6>클릭시 h6 요소추가</h6>");
+        // });
+        
+        //방법2 on메서드
+        // $("#wrap > h6").on("click",function(){
+        //     $("#wrap").append("<h6>클릭시 h6 요소추가</h6>");
+        // });
+
+        //방법3 $(부모요소).on(이벤트명, 자식요소, 실행할 함수) -> 자식요소에 동적으로 함수가 연결됨
+        // $("#wrap").on("click", "h6", function(){
+        //     $("#wrap").append("<h6>클릭시 h6 요소추가</h6>");
+        // });
+
+        $("#wrap > h6").click(function(){
+            const wrap = document.getElementById("wrap");
+            const h6El = document.createElement('h6'); //동적으로 <h6></h6>;
+            h6El.innerText = "클릭시 h6요소 추가"; //<h6>클릭시 h6 요소추가</h6>
+            addClickEvent(h6El);
+
+            wrap.appendChild(h6El); // 맨뒤에 자식요소로 추가
+        });
+
+        function addClickEvent(h6El){
+            h6El.onclick = function(){
+                const wrap = document.getElementById("wrap");
+                const h6El = document.createElement('h6'); //동적으로 <h6></h6>;
+                h6El.innerText = "클릭시 h6요소 추가"; //<h6>클릭시 h6 요소추가</h6>
+                addClickEvent(h6El);
+                wrap.appendChild(h6El); // 맨뒤에 자식요소로 추가
+
+            }
+        }
+        
+
+    </script>
+
+    <hr>
+
+    <h2>시각적인 효과(Effect 메서드)</h2>
+    <p>페이지 내에 애니메이션 효과를 주기위해 사용되는 메서드</p>
+
+    <h3>* sow, hide, toggle</h3>
+    <p>선택된 요소가 점점 커지면서 보여지고, 점점 작아지면서 사라지게 만드는 메서드</p>
+
+    <button id="show-btn">보여주기</button>
+    <button id="hide-btn">숨기기</button>
+    <button id="toggle-btn">토글</button>
+
+    <br><br>
+    <img id="hide-show-img" src="/이미지/다운로드.jpg" alt="">
+    <script>
+        $("#show-btn").click(function(){
+            $("hide-show-img").show(500);
+        })
+
+        $("#hide-btn").click(function(){
+            $("hide-show-img").hide(500);
+        })
+
+        $("#toggle-btn").click(function(){
+            $("hide-show-img").toggle(500);
+        })
+    </script>
+    
+</body>
+</html>

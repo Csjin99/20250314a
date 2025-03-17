@@ -1,0 +1,30 @@
+package c.control;
+
+import java.util.Scanner;
+
+public class practice1 {
+
+	public static void main(String[] args) {
+		/*
+		 * 나이를 입력받아
+		 * 13세이하면 어린이
+		 * 13세초과 19세이면 청소년
+		 * 13세 초과 성인
+		 * 
+		 */
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("나이를 입력 :");
+		int num = sc.nextInt();
+		
+		if (num < 13) {
+			System.out.println("%d세는 어린이에 속합니다." + num);
+		} else if (num > 19) {
+			System.out.println("%d세는 성인에 속합니다." + num);
+		} else {
+			System.out.println("%d세는 청소년에 속합니다." + num);
+		}
+
+	}
+
+}

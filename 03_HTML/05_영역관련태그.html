@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영역관련태그</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgb(255, 0, 0);
+        }
+        span{
+            width: 200px;
+            height: 200px;
+            border: 1px solid rgb(255, 0, 0);
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+        블럭요소 : 한 줄 단위로 영역을 차지함.
+                    줄바꿈이 적용되어 이미 존재하는 태그의 다음줄에 다음영역이 잡
+                    (p, pre, *div*, h....)
+        인라인요소 : content(내용) 영역에 해당하는 부분만 영역을 차지하는 요소
+                    줄바꿈이 적용되지않아 다음영역에 바로 옆으로 영역이 잡힘
+                    (b, makr, s, img, *span*...)
+
+    -->             
+
+    <h1>영역관리태그</h1>
+    <h2>div태그와 span태그의 차이점1 : 줄바꿈 처리</h2>
+
+    <div style="background: red;">st첫번째 영역</div>
+    <div style="background: rgb(98, 221, 17);">두번째 영역</div>
+    <div style="background: rgb(201, 253, 11);">세번째 영역</div>
+    <h3>span태그</h3>
+    <p>span태그는 인라인 요소로 contetn영역만 차지(줄바꿈 발생x)</p>
+    <span style="background: red;">st첫번째 영역</span>
+    <span style="background: rgb(98, 221, 17);">두번째 영역</span>
+    <span style="background: rgb(201, 253, 11);">세번째 영역</span>
+    
+    <h2>div태그와 span의 차이점2 : 영역지정방식</h2>
+    <h3>div태그 : 사각형 박스로 영역을 지정함</h3>
+    <div style="height: auto;">
+        [SPORTALKOREA] 배웅기 기자= 마커스 래시포드(27)가 20년 동안의 맨체스터 유나이티드(이하 맨유) 커리어를 정리하고 애스턴 빌라 유니폼을 입는다.
+        빌라는 3일(한국시간) 공식 홈페이지를 통해 래시포드 임대 영입 소식을 알렸다. 영국 매체 '데일리 메일'의 크리스 휠러 기자에 따르면 빌라는 래시포드의 주급 31만 5,000파운드(약 6억 원) 대부분을 분담한다. 이적료 4,000만 파운드(약 721억 원)의 완전 영입 옵션 또한 포함돼있다.
+        맨유 '성골 유스' 래시포드는 2016년 프로 데뷔, 혜성 같이 등장하며 팬들의 기대를 한몸에 받았다. 통산 기록은 426경기 138골 63도움으로 오랜 세월 맨유의 득점을 책임졌다. 그러나 지난 시즌 불성실한 태도를 비롯 43경기 8골 5도움으로 부진하며 비판 여론에 휩싸였고, 지난해 11월 후벵 아모링 감독이 부임한 직후 설자리를 잃었다.
+    </div>
+
+    <h3>span태그 : 문장단위로 영역을 지정함</h3>
+    <span style="height: auto;">
+        [SPORTALKOREA] 배웅기 기자= 마커스 래시포드(27)가 20년 동안의 맨체스터 유나이티드(이하 맨유) 커리어를 정리하고 애스턴 빌라 유니폼을 입는다.
+        빌라는 3일(한국시간) 공식 홈페이지를 통해 래시포드 임대 영입 소식을 알렸다. 영국 매체 '데일리 메일'의 크리스 휠러 기자에 따르면 빌라는 래시포드의 주급 31만 5,000파운드(약 6억 원) 대부분을 분담한다. 이적료 4,000만 파운드(약 721억 원)의 완전 영입 옵션 또한 포함돼있다.
+        맨유 '성골 유스' 래시포드는 2016년 프로 데뷔, 혜성 같이 등장하며 팬들의 기대를 한몸에 받았다. 통산 기록은 426경기 138골 63도움으로 오랜 세월 맨유의 득점을 책임졌다. 그러나 지난 시즌 불성실한 태도를 비롯 43경기 8골 5도움으로 부진하며 비판 여론에 휩싸였고, 지난해 11월 후벵 아모링 감독이 부임한 직후 설자리를 잃었다.
+    </span>
+
+    <hr>
+
+
+    <h1>iframe</h1>
+    <p>웹문서 안에 다른 웹페이즈를 추가하는 태그(인라인요소)</p>
+    <iframe src="./04_이미지및 멀티미디어태그.html" frameborder="0" width="500" height="300"></iframe>
+</body><iframe width="560" height="315" src="https://www.youtube.com/embed/HaI-6f60CAM?si=3yJA3R-drlCp6Efu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</html>

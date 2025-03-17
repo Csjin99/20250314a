@@ -1,0 +1,62 @@
+package c.control;
+
+import java.util.Scanner;
+
+public class practice1 {
+
+	public static void main(String[] args) {
+		/*
+		 * 나이를 입력받아
+		 * 13세이하면 어린이
+		 * 13세초과 19세이면 청소년
+		 * 19세 초과 성인
+		 * 
+		 */
+		Scanner sc = new Scanner(System.in);
+		
+	//	System.out.print("나이를 입력 :");
+	//	int num = sc.nextInt();
+		
+	//	if (num <= 13) {
+	//		System.out.printf("%d세는 어린이에 속합니다.", num);
+	//	} else if (num > 19) {
+	//		System.out.printf("%d세는 성인에 속합니다.", num);
+	//	} else {
+	//		System.out.printf("%d세는 청소년에 속합니다.", num);
+	//	}
+		
+		/*
+		 * 성별을 (m/f) 대소문자 상관없이 입력받아 남학생인지 여학생인지 출력하는 프로그럄을 작성하세요
+		 */
+		/*
+		System.out.println("성별(m/f) :");
+		char ch = sc.nextLine().charAt(0);
+		
+		if(ch == 'm' || ch == 'M') {
+			System.out.println("남학생");
+		} else if (ch == 'f' || ch == 'F') {
+			System.out.println("여학생");
+		} else {
+			System.out.println("똑바로 입력해라");
+		}
+		*/
+		/*
+		 * 정수(양수)를 입력받아
+		 * 짝수인지 홀수인지 출력하느 프로그램을 작성하라
+		 */
+		System.out.println("정수 입력 :");
+		int num = sc.nextInt();
+		
+		int n = num % 2;
+		if(num > 0) {
+			if(n == 0) {
+				System.out.println("짝수다");
+			} else if (n > 0) {
+				System.out.println("홀수");
+			}
+		}else {
+			System.out.println("양수가 아니다.");
+		}
+	}
+
+}

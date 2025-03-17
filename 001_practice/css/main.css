@@ -1,0 +1,297 @@
+
+body{
+    font-family: "Nanum Pen Script", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+}
+
+
+div,form, input {
+    box-sizing: border-box;
+}
+
+ul, li, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.wrap{
+    margin: 0 auto;
+    width: 70%;
+    height: 100%;
+}
+button{
+
+}
+
+
+/* 맨 위쪽 */
+
+#header{
+    border-top: 3px solid rgb(7, 230, 7);
+    border-bottom: 1px solid rgb(206, 206, 206);
+}
+
+#header1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#hd2 > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hd2>ul>li{
+    padding: 7px;
+    margin: 5px;
+}
+/* 검색어 */
+
+#nav{
+    border-bottom: 1px solid rgb(92, 91, 91);
+}
+
+#serch{
+    display: flex;
+    align-items: center;
+}
+
+#logo{
+    margin: 0;
+    padding: 0;
+}
+
+#logo >a>img{
+    width: 80px;
+    height: 80px;
+}
+
+#hd2> ul>li>a>img{
+    width: 20px;
+    height: 20px;
+}
+
+#serchBox{
+    border-radius: 30px;
+    border: 3px solid rgb(7, 230, 7);
+    display: flex;
+    padding: 8px;
+    width: 400px;
+    height: 60px;
+    justify-content: space-around;
+}
+
+#serchBox > input{
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 70%;
+}
+#serchBox> button{
+    height: 100%;
+    border: none;
+    background: none;
+}
+#serchBox> button>img{
+    width: 30px;
+    height: 30px;
+}
+#serchBox> button>img:hover{
+    width: 80%;
+    cursor: pointer;
+}
+
+/*메뉴바*/
+
+#nav1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nv1>ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+#nv1>ul>li{
+    padding: 0 10px;
+    height: 100%;
+}
+
+#nv1>ul>li>a{
+    font-size: 30px;
+}
+
+#myMusic{
+    font-size: 30px;
+}
+
+/*메인 메뉴*/
+
+#main{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu{
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu1{
+    width: 200px;
+}
+
+#mm2>div>a>img{
+    width: 200px;
+}
+
+#mm1> ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#btnli{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main2{
+    margin-left: 10px;
+}
+
+#mbtn{
+    display: flex;
+    justify-content: right;
+}
+
+#mbtn>button{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+#imghobo>a>img{
+    width: 300px;
+    height: 450px;
+}
+
+/* 로그인 */
+#loginbox{
+    width: 300px;
+    height: 250px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+#loginbtn{
+    height: calc(100% - 20px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginbox1{
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid green;
+    background: green;
+   font-size: 30px;
+    
+}
+
+#loginboxhi{
+    display: flex;
+    justify-content: space-between;
+}
+
+#consert>a>img{
+    margin-top: 10px;
+    width: 300px;
+    height: 200px;
+}
+
+
+/*메인 아래*/
+#mmain{
+    display: flex;
+    justify-content: space-between;
+}
+#mmain1{
+    width: 80%;
+}
+#heser{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+#heser1{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#mmain2{
+    width: 30%;
+}
+#mmain2>*{
+    height: 500px;
+    width: 100%;
+}
+
+#Announcement{
+    border-top: 1px solid gray;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+#ftline{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+#ft1{
+    margin-top: 10px;
+}
+
+#ft1>ul{
+    display: flex;
+    gap: 20px;
+    font-size: 25px;
+    justify-content: right;
+}
+
+#ft2>ul{
+    display: flex;
+    gap: 10px;
+}
+
+#ft2>ul>li>a{
+    font-size: 20px;
+}
+
+#ft2{
+    margin-top: 10px;
+}

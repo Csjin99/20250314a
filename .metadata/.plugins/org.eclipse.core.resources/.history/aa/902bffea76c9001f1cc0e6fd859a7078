@@ -1,0 +1,45 @@
+package e.array;
+
+public class B_Array {
+	public static void main(String[] args) {
+		int i = 10;
+		int[] iArr = new int[5];
+		System.out.println(iArr.hashCode());
+		
+		double[] darr = new double[3];
+		System.out.println(darr.hashCode());
+		
+		/*
+		 * 실제 리터럴값을 곧바로 담을 수 있는 변수를 일반변수
+		 * 주소값을 담고있는 변수는 참조변수(래퍼런스변수)라고 표현
+		 * 
+		 * 기본자료형(원시타입) : int double float ......
+		 * =>실제 리터럴값을 바로 담을 수 있음
+		 * 
+		 * 그외 자료형(String, Scanner, int[].....)-> 참조변수
+		 * => 메모리크기가 가변적이기 때문이다
+		 */
+		
+		
+		for(int j = 0; i <iArr.length; i++) {
+			System.out.println(iArr[j]);
+		}
+		
+		for(int j = 0; j <darr.length; j++) {
+			System.out.println(darr[j]);
+		}
+		
+		//내가 각 인덱스의 초기화를 하지 않아도 값들이 담겨있다
+		//heap이라는 메모리 공간은 절대 빈공간을 허용하지않는다
+		//=> 공간이 만들어질떄 JVM이 기본값으로 모두 초기화 함.
+		
+		System.out.println(iArr); //자료형 + @+ 주소값의 16진수 해시코드
+		System.out.println(darr.hashCode()); // 주소값의 10진수해시코드형태
+		
+		int[] arr = null;
+		System.out.println(arr);
+		
+
+	}
+
+}

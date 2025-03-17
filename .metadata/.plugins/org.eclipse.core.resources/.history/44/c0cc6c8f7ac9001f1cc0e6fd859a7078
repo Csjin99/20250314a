@@ -1,0 +1,41 @@
+package e.array;
+
+import java.util.Scanner;
+
+public class C_Array {
+
+	public static void main(String[] args) {
+		/*
+		// 1. 크기가 10인 정수형 배열 생성
+		int[] arr1 = new int[10];
+		
+		// 2. 반복문을 통해서 0번 인덱스부터 마지막 인덱스까지 모든값을 1로 초기화
+		for(int i = 0; i<10; i++ ) {
+			arr1[i] = 1;
+			
+		}
+		
+		// 3. 반복문을 통해서 0~마지막 인덱스까지 모두 출력
+		for(int i = 0; i<10; i++ ) {
+			System.out.println(arr1[i]);
+
+		}
+		*/
+		// 4. 사용자에게 배열의 길이를 입력받아 해당크기의 문자열 배열을 생성하라(strArr)
+		
+		//5. 반복문을 활용해서 매번 사용자에게  과일명을 입력받아 그 값을 strArr에 대입해라 (0~마지막인덱스)
+		//좋아하는관일 : xxx -> 반복
+		
+		//6. 반복문을 통해 strArr에 있는 모든 값을 출력
+		
+		Scanner sc = new Scanner(System.in);
+		int a = 0;
+		int[] arr = new int[a];
+		System.out.println("과일의 배열 : ");
+		a =sc.nextInt();
+		System.out.println(arr[a]);
+		
+		
+	}
+
+}

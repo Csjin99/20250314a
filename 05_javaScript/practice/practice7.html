@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(167, 246, 252);
+            margin: 0 auto;
+            padding: 0;
+            width: 20%;
+
+        }
+        .wrap{
+            background: whitesmoke;
+            border: 1px solid gray;
+
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+
+        }
+
+        .inputBox{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        div>input{
+        border-left: none;
+        border-top: none;
+        border-right: none;
+        background: whitesmoke;
+        border-bottom: 2px dashed black;
+        }
+        
+        #pas>p{
+            font-size: 7px;
+        }
+
+        .email{
+            width: 70px;
+        }
+        
+        #join{
+            margin-top: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #join>button{
+            border: none;
+            background: rgb(128, 248, 128);
+            font-size: 20px;
+            height: 50px;
+            width: 100%;
+        }
+
+        #join>button:hover{
+            background:  rgb(71, 250, 71);
+            font-size: 22px;
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="wrap">
+
+            <div class="inputBox">
+
+                <div>
+                    아이디
+                </div>
+
+                <div>
+                    <input type="text" id="userId">
+                </div>
+
+            </div>
+
+            <div id="id-error"></div>
+
+            <div class="inputBox">
+                <div>
+                    패스워드
+                </div>
+                <div id="pas">
+                    <input type="text" id="userpas">
+                    <p>영문자 대/소문자 특수문자, 숫자 포함 8 ~ 32자</p>
+                </div>
+            </div>
+            <div id="ps-error"></div>
+            <div class="inputBox">
+                <div>
+                    패스워드 확인
+                </div>
+                <div>
+                    <input type="text" id="pas">
+                </div>
+            </div>
+            <div id="pschec-error"></div>
+            
+            <div class="inputBox">
+
+                <div>
+                    이메일
+                </div>
+
+                <div>
+                    <input type="text" class="email" onblur="check(event)">@<input type="text" class="email" onclick="check()">
+                </div>
+
+            </div>
+
+            <div class="inputBox">
+                <div>
+                    주소
+                </div>
+                <div>
+                    <input type="text">
+                </div>
+            </div>
+            
+            <div id="join">
+                <button>가입</button>
+            </div>
+            
+
+        </div>
+    </form>
+
+
+
+
+
+    <script>
+        function check(){
+            let errorId = document.getElementById("userId").value;
+            let errorma = document.getElementById("id-error");
+            
+
+            if(errorId == ""){
+                errorma.textContent = "필수입력사항입니다.";
+            } else {
+                errorma.textContent = "";
+            }
+
+        }
+
+
+        
+    </script>
+</body>
+</html>

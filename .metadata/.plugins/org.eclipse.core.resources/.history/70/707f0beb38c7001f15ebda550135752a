@@ -1,0 +1,52 @@
+package c.control;
+
+import java.util.Scanner;
+
+public class B_switch {
+	/*
+	 * switch문도 if문과 동일하게 조건문이다.
+	 * 
+	 * 다만, if문과의 차이점이라면
+	 * >if문은 조건식을 자유롭게 기술할 수 있다.
+	 * 	swutch문은 동등비교로 빡에 수행되지 않는다
+	 * >실행할 구문만 실행하고 자동으로 빠져나올 수 없다.(직접 빠져나오는 설정이 필요하다.)
+	 * 
+	 * [표현식]
+	 * switch(비교대상(정수,문자,문자열)){
+	 * case 값1: 실행코드;
+	 * case 값2: 실행코드;
+	 * case 값3: 실행코드;
+	 * ...
+	 * default: 위에값이 전부 일치하지않을때 실행하는 코듸
+	 * }
+	 */
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		/*
+		 * 정수를 입력받아서
+		 * 1일경우 빨간색
+		 * 2일경우 파란색
+		 * 3일경우 초록색
+		 * 다른 경우 모두 잘못입력
+		 */
+		
+		int num;
+		System.out.print("정수입력 : ");
+		num = sc.nextInt();
+		
+		switch(num) {
+		case 1:
+			System.out.println("빨강");
+		case 2:
+			System.out.println("파란");
+		case 3:
+			System.out.println("초록");
+		default:
+			System.out.println("입력오류다");
+		}
+
+	}
+
+}

@@ -1,0 +1,10 @@
+package c.control;
+
+public class A_if1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

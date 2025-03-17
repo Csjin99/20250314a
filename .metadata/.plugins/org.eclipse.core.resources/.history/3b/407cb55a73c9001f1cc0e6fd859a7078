@@ -1,0 +1,11 @@
+package e.array;
+
+public class B_Array {
+	public static void main(String[] args) {
+		int i = 10;
+		int[] iArr = new int[5];
+		System.out.println(iArr.hashCode());
+
+	}
+
+}

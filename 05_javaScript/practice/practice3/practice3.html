@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .none-pass{
+            color: red;
+        }
+        .pass{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>practice4</h1>
+    <form action="">
+        <fieldset>
+            <legend>회원가입</legend>
+            아이디 : <input type="text" onkeyup="checkId(this)"> <span id="id-re"></span> <br><br>
+            비밀번호 : <input type="text"> <br><br>
+            비밀번호 확인 : <input type="text" onblur="checkPwd()"> <br><br>
+            이름 : <input type="text"> <br><br>
+
+            <input type="submit" value="회원가입">
+        </fieldset>
+    </form>
+
+    <script>
+        function checkId(_this){
+            const id = _this.value;
+            const idcheck = document.querySelector('#id-re')
+            if(id === "user01"){
+                idcheck.innerHTML="이미존재하는 아이디입니다."; //빨강
+                idcheck.className= 'none-pass';
+            }else{
+                idcheck.innerHTML="사용 가능한 아이디입니다."; //초록
+                idcheck.className="pass";
+            }
+
+        }
+
+        function checkPwd(){
+            /*
+                비밀번호와 비밀번호 확인 값을 비교
+                비교결과가 같으면 초록글자. 다르면 빨간글자
+            */
+        }
+    </script>
+</body>
+</html>

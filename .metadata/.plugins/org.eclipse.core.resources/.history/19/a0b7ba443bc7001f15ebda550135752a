@@ -1,0 +1,88 @@
+package c.control;
+
+import java.util.Scanner;
+
+public class B_switch {
+	/*
+	 * switch문도 if문과 동일하게 조건문이다.
+	 * 
+	 * 다만, if문과의 차이점이라면
+	 * >if문은 조건식을 자유롭게 기술할 수 있다.
+	 * 	swutch문은 동등비교로 빡에 수행되지 않는다
+	 * >실행할 구문만 실행하고 자동으로 빠져나올 수 없다.(직접 빠져나오는 설정이 필요하다.)
+	 * 
+	 * [표현식]
+	 * switch(비교대상(정수,문자,문자열)){
+	 * case 값1: 실행코드;
+	 * case 값2: 실행코드;
+	 * case 값3: 실행코드;
+	 * ...
+	 * default: 위에값이 전부 일치하지않을때 실행하는 코듸
+	 * }
+	 */
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		/*
+		 * 정수를 입력받아서
+		 * 1일경우 빨간색
+		 * 2일경우 파란색
+		 * 3일경우 초록색
+		 * 다른 경우 모두 잘못입력
+		 * }
+		 * 
+		 * break -> switch문 내에서 사용하면 해당코드가 실행됨과 동시에
+		 * 			가장 가까운 switch문을 종료한다
+		 * 
+		 */
+		/*
+		int num;
+		System.out.print("정수입력 : ");
+		num = sc.nextInt();
+		
+		switch(num) {
+		case 1:
+			System.out.println("빨강");
+			break;
+		case 2:
+			System.out.println("파란");
+			break;
+		case 3:
+			System.out.println("초록");
+			break;
+		default:
+			System.out.println("입력오류다");
+		}
+		 */
+		
+		/*
+		 * 과일을 구매하는 프로그램을 자성하여 봅시다.
+		 * 구매하고자하는 과일을 입력하면
+		 * 그에맞는 가격이 출려되는 프로그램을 작성해주세요
+		 * 
+		 * 구매하고자하는 과일 사과(2000) 바나나(3000) 딸기(20000)
+		 */
+		
+		String name;
+		System.out.print("사과, 바나나,딸기 중 고르시오 : ");
+		name = sc.nextLine();
+		
+		switch(name){
+		case "딸기":
+			System.out.println("딸기의 가격은 20000이다.");
+			break;
+		case "바나나":
+			System.out.println("바나나의 가격은 3000이다.");
+			break;
+		case "사과":
+			System.out.println("사과의 가격은 2000이다.");
+			break;
+		default:
+			System.out.println("없는 과일이다.");
+			break;
+		
+		}
+	}
+
+}

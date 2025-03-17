@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            margin: 0 auto;
+            padding: 0;
+        }
+        .area{
+            width: 600px;
+            margin: 0;
+            border: 2px solid black;
+
+        }
+        .area> *{
+            text-align: center;
+        }
+        .wrap{
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        #mainBox{
+            width: 600px;
+            background: gray;
+            padding: 10px;
+            display: none;
+        }
+
+        #mainBox>div{
+            gap: 30px;
+        }
+
+        #mName{
+            width: 80%;
+        }
+
+        #dateBox{
+            width: 600px;
+            background: gray;
+            padding: 10px;
+            display: none;
+        }
+
+        #nameBox{
+            width: 600px;
+            background: gray;
+            padding: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset class="area">
+            <legend>검색할 항목을 선택하세요.</legend>
+            <div class="wrap">
+                <div>
+                    <input type="radio" name="che" value="1" onclick="show(this)">제목
+                </div>
+                <div>
+                    <input type="radio" name="che" value="2" onclick="show(this)">날짜
+                </div>
+                <div>
+                    <input type="radio" name="che" value="3" onclick="show(this)">작성자
+                </div>
+            </div>
+        </fieldset>
+        <br>
+        <div id="mainBox" class="box1">
+            검색할 제목을 입력하세요 :
+            <br>
+            <div>
+                <input type="text" id="mName">
+                <input type="button" value="검색">
+            </div>
+        </div>
+
+        <div id="dateBox" class="box2">
+            검색할 날짜를 선택하세요 :
+            <br>
+            <div>
+                <input type="date"> - <input type="date">
+                <input type="button" value="검색">
+            </div>
+        </div>
+
+        <div id="nameBox" class="box3">
+            검색할 작성자 아이디를 입력하세요. 입력하세요 :
+            <br>
+            <div>
+                <input type="text">
+                <input type="button" value="검색">
+            </div>
+        </div>
+    </form>
+
+    
+
+    <script>
+        function show(_this){
+            let tag = document.querySelectorAll("che");
+
+            for(let i=0; i<tag.length; i++){
+                let Box = document.querySelectorAll(".box")
+               
+                if(tag[i].value == "1"){
+                    $('.box1').css("display","block");
+                } else if(tag[i].value == "2"){
+                    $('.box2').css("display","block");
+                } else if(tag[i].value == "3"){
+                    $('.box3').css("display","block");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+
+body{
+    margin: 0 auto;
+    padding: 0;
+    width: 40%;
+}
+
+
+#fd{
+    border: 2px solid rgb(121, 121, 121);
+    display: flex;
+    gap: 10px;
+}
+
+#box{
+    border: 1px solid red;
+    height: 150px;
+}
