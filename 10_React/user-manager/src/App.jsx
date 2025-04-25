@@ -1,43 +1,46 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom'
+import { useState } from 'react'
 import UserList from './pages/UserList'
 import NotFound from './pages/NotFound'
+import UserRegistration from './pages/UserRegistration'
 import './App.css'
 
-
-const userList=[{
-  name: '최성진',
-  age: 20,
-  isOnline: 'off',
-},{
-  name: '이지은',
-  age: 31,
-  isOnline: 'on',
-},{
-  name: '최강록',
-  age: 35,
-  isOnline: 'off',
-},{
-  name: '급식대가',
-  age: 48,
-  isOnline: 'on',
-}]
-
 function App() {
+  const [userList, setUserList] = useState([
+    { name: '최성진', id: 'user01', age: 20, email: 'user01@naver.com', isOnline: 'off' },
+    { name: '이지은', id: 'user02', age: 31, email: 'user02@naver.com', isOnline: 'on' },
+    { name: '최강록', id: 'user03', age: 35, email: 'user03@naver.com', isOnline: 'off' },
+    { name: '급식대가', id: 'user04', age: 48, email: 'user04@naver.com', isOnline: 'on' },
+  ])
+
+  const addUser = (newUser) => {
+    setUserList(prev => [...prev, newUser])
+  }
+
+  return (
+    <BrowserRouter>
+      <LocationComponent userList={userList} addUser={addUser} />
+    </BrowserRouter>
+  )
+}
+
+function LocationComponent({ userList, addUser }) {
+  const location = useLocation()
 
   return (
     <>
-      <BrowserRouter>
-        <nav style={{marginBottom: 20}}>
-          {/* Link : a태그와 동일한 역할을 하지만 react-router-dom을 활용해 spa방식으로 자연스럽게 화면전횐 */}
-          <Link to="/" style={{marginRight: 12}}>유저목록보기</Link>
-          <Link to="/about" style={{marginRight: 12}}>소개</Link>
-          <Link to="/profile/최지원">프로필</Link>
+      <h1>유저 목록</h1>
+      {location.pathname === '/' && (
+        <nav style={{ marginBottom: 20 }}>
+          <Link to="/user" style={{ marginRight: 12 }}>유저 추가하기</Link>
         </nav>
-        <Routes>
-          <Route path='/' element ={<UserList usercardList = {userList}/>}/>
-          <Route path='*' element={<NotFound />}/>
-        </Routes>
-      </BrowserRouter>
+      )}
+
+      <Routes>
+        <Route path="/" element={<UserList usercardList={userList} />} />
+        <Route path="/user" element={<UserRegistration addUser={addUser} />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   )
 }
