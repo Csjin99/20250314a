@@ -3,6 +3,7 @@ import { useState } from 'react'
 import UserList from './pages/UserList'
 import NotFound from './pages/NotFound'
 import UserRegistration from './pages/UserRegistration'
+import UserDetail from './pages/UserDetail'
 import './App.css'
 
 function App() {
@@ -19,12 +20,12 @@ function App() {
 
   return (
     <BrowserRouter>
-      <LocationComponent userList={userList} addUser={addUser} />
+      <LocationComponent userList={userList} addUser={addUser} setUserList={setUserList}/>
     </BrowserRouter>
   )
 }
 
-function LocationComponent({ userList, addUser }) {
+function LocationComponent({ userList,setUserList ,addUser }) {
   const location = useLocation()
 
   return (
@@ -39,6 +40,7 @@ function LocationComponent({ userList, addUser }) {
       <Routes>
         <Route path="/" element={<UserList usercardList={userList} />} />
         <Route path="/user" element={<UserRegistration addUser={addUser} />} />
+        <Route path="/user/:id" element={<UserDetail userList={userList} setUserList={setUserList} />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

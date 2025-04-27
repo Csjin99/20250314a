@@ -34,10 +34,10 @@ const UserRegistration = ({ addUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const { name, age, isOnline } = form
+    const { name, id,age, email,isOnline } = form
 
-    addUser({ name, age: Number(age), isOnline })
-    navigate('/') // 저장 후 유저 목록으로 이동
+    addUser({ name, id,age: Number(age), email, isOnline })
+    navigate('/')
   }
 
   return (
@@ -45,7 +45,7 @@ const UserRegistration = ({ addUser }) => {
       <User>
         이름: <input name="name" type="text" placeholder='이름을 입력해주세요' value={form.name} onChange={handleChange} required />
         아이디: <input name="id" type="text" placeholder='아이디를 입력해주세요' value={form.id} onChange={handleChange} required />
-        나이: <input name="age" type='text' placeholder='나이를 입력해주세요' value={form.age} onChange={handleChange} required />
+        나이: <input name="age" type='number' placeholder='나이를 입력해주세요' value={form.age} onChange={handleChange} required />
         이메일: <input name="email" type="email" placeholder='이메일을 입력해주세요' value={form.email} onChange={handleChange} required />
         상태:
         <select name="isOnline" value={form.isOnline} onChange={handleChange}>

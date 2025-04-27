@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import UserDetail from './UserDetail'
+import { useNavigate } from "react-router-dom";
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Gugi&family=Nanum+Pen+Script&display=swap');
@@ -58,32 +58,21 @@ const UserOffline = styled.p`
 
 const UserCard = ({users}) => {
 
-    if(users.isOnline === "on"){
-        return(
-            <Container onClick={<UserDetail/>}>
-                <User>
-                    <UserName>이름: {users.name}</UserName>
-                    <UserAge>나이: {users.age}</UserAge>
+    const navigate = useNavigate();
+
+    return (
+        <Container onClick={() => navigate(`/user/${users.id}`)}>
+            <User>
+                <UserName>이름: {users.name}</UserName>
+                <UserAge>나이: {users.age}</UserAge>
+                {users.isOnline === "on" ? (
                     <UserOnline>🟢 온라인 상태입니다.</UserOnline>
-                </User>
-                
-            </Container>
-        )
-        
-    }else{
-        return(
-            <Container>
-                <User>
-                    <UserName>이름: {users.name}</UserName>
-                    <UserAge>나이: {users.age}</UserAge>
-                    <UserOffline> 🔴 오프라인 상태입니다.</UserOffline>
-                </User>
-            </Container>
-    
-        )
-        
-     
-    }
+                ) : (
+                    <UserOffline>🔴 오프라인 상태입니다.</UserOffline>
+                )}
+            </User>
+        </Container>
+    );
 }
 
 export default UserCard
