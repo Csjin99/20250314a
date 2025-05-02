@@ -52,11 +52,7 @@ class CommentList extends Component {
     return (
       <div>
         {commentList.map((c) => (
-          <Comment
-            key={c.id}
-            id={c.id}
-            message={c.message}
-          />
+          <Comment key={c.id} id={c.id} message={c.message} />
         ))}
       </div>
     );

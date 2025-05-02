@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-
+import React, { useState } from 'react';
 
 /*
  *  state : 컴포넌트의 상태값
@@ -16,33 +15,32 @@ import React, { useState } from 'react'
  */
 
 const UseStateTest = () => {
-    //let num = 0;
-    const [num, setNum] = useState(0);
+  //let num = 0;
+  const [num, setNum] = useState(0);
 
-    const onClickPlus = () => {
-        //num += 1; 현새 상태를 직접 상용해서 변경 -> state변경x -> 리렌더링x
-        setNum(num + 1);
-        setNum(num + 1);
-        //결과적으로 num+1이 됨 -> 실시간으로 처리되는것이 아니라 모아두었다가 한번에 처리하는 방식
-    }
+  const onClickPlus = () => {
+    //num += 1; 현새 상태를 직접 상용해서 변경 -> state변경x -> 리렌더링x
+    setNum(num + 1);
+    setNum(num + 1);
+    //결과적으로 num+1이 됨 -> 실시간으로 처리되는것이 아니라 모아두었다가 한번에 처리하는 방식
+  };
 
-    const onClickMinus = () => {
-        setNum(prevNum =>  prevNum - 1);
-        setNum((prevNum) => {
-            console.log("이전상태 출력 :", prevNum)
-            return prevNum - 1
-        });
-        //상태가 이전 상태에 의존하는 경우에는
-        //항상 상태 업데이트 함수에 콜백을 사용하는 setNum(prevNum =>  prevNum - 1)방식을 사용해야한다.
-    }
-    return(
-        <div>
-            <div>COUNT : {num}</div>
-            <button onClick={onClickPlus}> + </button>
-            <button onClick={onClickMinus}> - </button>
-        </div>
-    )
-}
+  const onClickMinus = () => {
+    setNum((prevNum) => prevNum - 1);
+    setNum((prevNum) => {
+      console.log('이전상태 출력 :', prevNum);
+      return prevNum - 1;
+    });
+    //상태가 이전 상태에 의존하는 경우에는
+    //항상 상태 업데이트 함수에 콜백을 사용하는 setNum(prevNum =>  prevNum - 1)방식을 사용해야한다.
+  };
+  return (
+    <div>
+      <div>COUNT : {num}</div>
+      <button onClick={onClickPlus}> + </button>
+      <button onClick={onClickMinus}> - </button>
+    </div>
+  );
+};
 
-
-export default UseStateTest
+export default UseStateTest;

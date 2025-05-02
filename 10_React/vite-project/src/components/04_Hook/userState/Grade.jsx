@@ -1,14 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const Grade = ({isLogin}) => {
-    
+const Grade = ({ isLogin }) => {
+  return <div>{isLogin && <div>실버 등급</div>}</div>;
+};
 
-    return (
-        <div>
-            {isLogin &&
-                <div>실버 등급</div>}
-        </div>
-    )
-}
-
-export default Grade
+export default Grade;

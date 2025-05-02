@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 /*
     class component
@@ -15,51 +15,49 @@ import React, { Component } from 'react'
 */
 
 class LifecycleText extends Component {
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
 
+    //js에서는 class에 필드영역이없기 때문에
+    //저장하고싶은 데이터를 state라는 객체에 key-value형태로 저장한다.
+    this.state = {
+      count: 0,
+    };
 
-        //js에서는 class에 필드영역이없기 때문에
-        //저장하고싶은 데이터를 state라는 객체에 key-value형태로 저장한다.
-        this.state = {
-            count: 0,
-        }
+    console.log('constructorL 컴포넌트 생성자 호출');
+  }
 
-        console.log("constructorL 컴포넌트 생성자 호출");
-    }
+  // 컴포넌트가 마운트되었을 때 호출(처음 렌더링될 때)
+  componentDidMount() {
+    console.log('componentDidMount : 컴포넌트가 마운트 되었습니다.');
+  }
 
-    // 컴포넌트가 마운트되었을 때 호출(처음 렌더링될 때)
-    componentDidMount(){
-        console.log('componentDidMount : 컴포넌트가 마운트 되었습니다.')
-    }
+  //컴포넌트가 업데이트가 된후에 호출
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate : 컴포넌트가 업데이트 되었습니다.');
+    console.log('이전 state: ', prevState);
+    console.log('이전 props: ', prevProps);
+  }
 
-    //컴포넌트가 업데이트가 된후에 호출
-    componentDidUpdate(prevProps,prevState){
-        console.log("componentDidUpdate : 컴포넌트가 업데이트 되었습니다.")
-        console.log("이전 state: ", prevState);
-        console.log("이전 props: ", prevProps);
-    }
+  //컴포넌트가 언마운트 될 때 호출(사라지기직전)
+  componentWillUnmount() {
+    console.log('componentWillUnmount : 컴포넌트가 언마운트 됩니다.');
+  }
 
-    //컴포넌트가 언마운트 될 때 호출(사라지기직전)
-    componentWillUnmount(){
-        console.log("componentWillUnmount : 컴포넌트가 언마운트 됩니다.")
+  increment = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
 
-    }
-
-    increment = () =>{
-        this.setState({
-            count: this.state.count + 1
-        })
-    }
-
-    render() {
-        return (
-        <div>
-            <p>Count : {this.state.count}</p>
-            <button onClick={this.increment}> 1 증가</button>
-        </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <p>Count : {this.state.count}</p>
+        <button onClick={this.increment}> 1 증가</button>
+      </div>
+    );
+  }
 }
 
-export default LifecycleText
+export default LifecycleText;
