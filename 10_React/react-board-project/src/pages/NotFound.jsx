@@ -6,12 +6,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
-  text-align: center;
-  background-color: white;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 `;
 
 const Title = styled.h1`
@@ -47,10 +41,10 @@ const NotFound = () => {
   return (
     <Container>
       <Title>404</Title>
-      <Message>페이지를 찾을 수 없습니다</Message>
-      <Button onClick={() => navigate('/users')}>홈으로 돌아가기</Button>
+      <Message>없는 페이지입니다.</Message>
+      <Button onClick={() => navigate('/')}>홈으로 돌아가기</Button>
     </Container>
   );
 };
 
-export default NotFound; 
+export default NotFound;

@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "userId": "admin",
+      "userPwd": "1234",
+      "userName": "관리자",
+      "age": 27,
+      "email": "skskcsj@naver.com",
+      "gender": "남",
+      "id": "4175"
+    },
+    {
+      "id": "0af3",
+      "userId": "skskcsj",
+      "userPwd": "1234",
+      "userName": "김나박",
+      "age": "128",
+      "email": "tjdwls0380@naver.com",
+      "gender": "남"
+    },
+    {
+      "id": "471a",
+      "email": "aaaa@naver.com",
+      "age": 28,
+      "userName": "박나래",
+      "userPwd": "1234",
+      "userId": "a123",
+      "gender": "여"
+    }
+  ],
+  "List": [
+    {
+      "id": "1",
+      "userId": "admin",
+      "restaurant": "맛나라 식당",
+      "location": "서울시 강남구 테헤란로",
+      "mainFood": "김밥",
+      "mainPrice": 5000,
+      "sideFood": "알밥",
+      "sidePrice": 7000
+    },
+    {
+      "id": "2",
+      "userId": "admin",
+      "restaurant": "냉면만합니다",
+      "location": "서울시 강남구 테헤란로",
+      "mainFood": "냉면",
+      "mainPrice": 8000,
+      "sideFood": "만두",
+      "sidePrice": 6000
+    },
+    {
+      "id": "5",
+      "userId": "skskcsj",
+      "restaurant": "냉면만합니다3",
+      "location": "서울시 강남구 테헤란로",
+      "mainFood": "냉면",
+      "mainPrice": 8000,
+      "sideFood": "만두",
+      "sidePrice": 6000
+    }
+  ]
+}

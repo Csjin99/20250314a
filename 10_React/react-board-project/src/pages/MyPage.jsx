@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import axios from 'axios';
 
 const Cantainer = styled.div`
   display: block;
@@ -100,63 +98,47 @@ const WBtn = styled.button`
   cursor: pointer;
 `;
 
-const schema = yup.object().shape({
-  userId: yup
-    .string()
-    .required('아이디는 필수입니다.')
-    .test('checkDuplication', '이미 사용 중인 아이디입니다.', async (value) => {
-      if (!value) return false;
-      const res = await axios.get(`http://localhost:3001/users?userId=${value}`);
-      return res.data.length === 0;
-    }),
-  userPwd: yup.string().required('비밀번호를 입력해주세요.'),
-  userName: yup.string().required('이름을 입력해주세요.'),
-  age: yup.number().typeError('숫자만 입력해주세요'),
-  email: yup.string().email('올바른 이메일 형식이 아닙니다.').required('이메일을 입력해주세요.'),
-});
-
-function UserAdd() {
+function MyPage() {
+  const { register, handleSubmit, setValue } = useForm();
+  const [gender, setGender] = useState('');
   const navigate = useNavigate();
-  const [gender, setGender] = useState(null);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    trigger,
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  useEffect(() => {
+    const sessionUser = sessionStorage.getItem('user');
+    if (sessionUser) {
+      const user = JSON.parse(sessionUser);
+      setValue('userId', user.userId);
+      setValue('userPwd', user.userPwd);
+      setValue('userName', user.userName);
+      setValue('age', user.age);
+      setValue('email', user.email);
+      setGender(user.gender);
+    }
+  }, [setValue]);
+
+  const handleGender = (value) => {
+    setGender(value);
+    setValue('gender', value);
+  };
 
   const onSubmit = async (data) => {
+    data.gender = gender;
+
+    const sessionUser = JSON.parse(sessionStorage.getItem('user'));
+    const userId = sessionUser.id;
+
     try {
-      // 중복 체크 전에 trigger로 userId 검사
-      const isUserIdValid = await trigger('userId');
-      if (!isUserIdValid) {
-        alert(errors.userId?.message || '아이디 중복 검사에 실패했습니다.');
-        return; // 아이디 중복 체크에서 오류가 있으면 가입을 진행하지 않음
+      const response = await axios.put(`http://localhost:3001/users/${userId}`, data);
+      if (response.status === 200) {
+        alert('회원 정보가 성공적으로 수정되었습니다.');
+        sessionStorage.setItem('user', JSON.stringify(response.data));
+        navigate('/MainHome');
+      } else {
+        alert('수정에 실패했습니다.');
       }
-
-      // 서버에 회원가입 요청
-      await axios.post('http://localhost:3001/users', { ...data, gender });
-      alert('회원가입이 완료되었습니다.');
-      navigate('/');
-    } catch (err) {
-      console.error(err);
-      alert('회원가입 중 오류가 발생했습니다. 다시 시도해주세요.');
-    }
-  };
-
-  const handleGender = (selectedGender) => {
-    setGender((prev) => (prev === selectedGender ? null : selectedGender));
-  };
-
-  const handleIdCheck = async () => {
-    const isValid = await trigger('userId'); // 중복 체크를 트리거
-    if (isValid) {
-      alert('아이디 중복 검사가 완료되었습니다.');
-    } else {
-      alert(errors.userId?.message || '아이디를 다시 확인해주세요.');
+    } catch (error) {
+      console.error(error);
+      alert('오류가 발생했습니다.');
     }
   };
 
@@ -168,7 +150,6 @@ function UserAdd() {
           <Div>
             <IdInputBox>
               <Input {...register('userId')} placeholder="아이디를 입력해주세요" />
-              <IdBtn onClick={handleIdCheck}>중복확인</IdBtn>
             </IdInputBox>
 
             <InputBox>
@@ -198,12 +179,12 @@ function UserAdd() {
           </Div>
         </Loginfrom>
         <ButtonBox>
-          <Btn onClick={handleSubmit(onSubmit)}>완료</Btn>
-          <HomeBtn onClick={() => navigate('/')}>취소</HomeBtn>
+          <Btn onClick={handleSubmit(onSubmit)}>수정하기</Btn>
+          <HomeBtn onClick={() => navigate('/MainHome')}>뒤로가기</HomeBtn>
         </ButtonBox>
       </LoginBox>
     </Cantainer>
   );
 }
 
-export default UserAdd;
+export default MyPage;
