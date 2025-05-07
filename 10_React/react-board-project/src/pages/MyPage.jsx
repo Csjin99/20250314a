@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 const Cantainer = styled.div`
   display: block;
@@ -40,7 +42,7 @@ const InputBox = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
@@ -48,16 +50,23 @@ const Input = styled.input`
 const Div = styled.div`
   width: 90%;
 `;
-const IdBtn = styled.button`
-  height: 45px;
-  width: 140px;
-`;
+
 const IdInputBox = styled.div`
   gap: 10px;
   margin-bottom: 10px;
   width: 100%;
   display: flex;
 `;
+
+const Error = styled.p`
+  font-size: 14px;
+  color: #ff0000;
+  padding: 0;
+  padding-bottom: 10px;
+  margin: 0;
+  font-weight: bold;
+`
+
 const BtnBox = styled.div`
   display: flex;
   gap: 15px;
@@ -98,10 +107,23 @@ const WBtn = styled.button`
   cursor: pointer;
 `;
 
+const schema = yup.object().shape({
+  userId: yup.string().required('아이디는 필수입니다.'),
+  userPwd: yup.string().required('비밀번호는 필수입니다.'),
+  userName: yup.string().required('이름은 필수입니다.'),
+});
+
 function MyPage() {
-  const { register, handleSubmit, setValue } = useForm();
   const [gender, setGender] = useState('');
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
 
   useEffect(() => {
     const sessionUser = sessionStorage.getItem('user');
@@ -120,6 +142,7 @@ function MyPage() {
     setGender(value);
     setValue('gender', value);
   };
+
 
   const onSubmit = async (data) => {
     data.gender = gender;
@@ -145,20 +168,24 @@ function MyPage() {
   return (
     <Cantainer>
       <LoginBox>
-        <Title>회원 가입</Title>
+        <Title>내 정보</Title>
         <Loginfrom>
           <Div>
             <IdInputBox>
               <Input {...register('userId')} placeholder="아이디를 입력해주세요" />
             </IdInputBox>
+              {errors.userId && <Error>{errors.userId.message}</Error>}
 
             <InputBox>
               <Input type="password" {...register('userPwd')} placeholder="비밀번호를 입력해주세요" />
             </InputBox>
+            {errors.userPwd && <Error>{errors.userPwd.message}</Error>}
 
             <InputBox>
               <Input type="text" {...register('userName')} placeholder="이름을 입력해주세요" />
+              
             </InputBox>
+            {errors.userName && <Error>{errors.userName.message}</Error>}
 
             <InputBox>
               <Input type="number" {...register('age')} placeholder="나이를 입력해주세요" />

@@ -3,10 +3,10 @@
     {
       "userId": "admin",
       "userPwd": "1234",
-      "userName": "관리자",
+      "userName": "최성진",
       "age": 27,
       "email": "skskcsj@naver.com",
-      "gender": "남",
+      "gender": "여",
       "id": "4175"
     },
     {
@@ -26,29 +26,18 @@
       "userPwd": "1234",
       "userId": "a123",
       "gender": "여"
+    },
+    {
+      "id": "8221",
+      "age": 32,
+      "userName": "아이유",
+      "userPwd": "1234",
+      "userId": "user01",
+      "email": "",
+      "gender": "여"
     }
   ],
   "List": [
-    {
-      "id": "1",
-      "userId": "admin",
-      "restaurant": "맛나라 식당",
-      "location": "서울시 강남구 테헤란로",
-      "mainFood": "김밥",
-      "mainPrice": 5000,
-      "sideFood": "알밥",
-      "sidePrice": 7000
-    },
-    {
-      "id": "2",
-      "userId": "admin",
-      "restaurant": "냉면만합니다",
-      "location": "서울시 강남구 테헤란로",
-      "mainFood": "냉면",
-      "mainPrice": 8000,
-      "sideFood": "만두",
-      "sidePrice": 6000
-    },
     {
       "id": "5",
       "userId": "skskcsj",
@@ -58,6 +47,76 @@
       "mainPrice": 8000,
       "sideFood": "만두",
       "sidePrice": 6000
+    },
+    {
+      "id": "d529",
+      "userId": "admin",
+      "restaurant": "어반벨리801",
+      "location": "수원시 팔달구 인계로 94번길",
+      "mainFood": "제주감귤 수풀레",
+      "mainPrice": "15800",
+      "sideFood": "카이막",
+      "sidePrice": "11800"
+    },
+    {
+      "id": "05b5",
+      "userId": "admin",
+      "restaurant": "행궁빙수",
+      "location": "수원시 팔달구 정조로905번길",
+      "mainFood": "딸기빙수",
+      "mainPrice": "18000",
+      "sideFood": "행궁라떼(커피빙수)",
+      "sidePrice": "7000"
+    },
+    {
+      "id": "ed6e",
+      "userId": "admin",
+      "restaurant": "사바토사몬",
+      "location": "수원시 팔달구 수원천로 373 1층",
+      "mainFood": "사바토사몬 정식",
+      "mainPrice": "27000",
+      "sideFood": "논알콜 스파클링 화이트와인",
+      "sidePrice": "8000"
+    },
+    {
+      "id": "0767",
+      "userId": "admin",
+      "restaurant": "남문 매운오뎅",
+      "location": "수원시 팔달구 중부대로3번길",
+      "mainFood": "오뎅2개",
+      "mainPrice": "2400",
+      "sideFood": "떡볶이",
+      "sidePrice": "4000"
+    },
+    {
+      "id": "e32a",
+      "userId": "admin",
+      "restaurant": "긴자료코",
+      "location": "서울 마포구 홍익로2길",
+      "mainFood": "데미그라스 돈까스",
+      "mainPrice": "11000",
+      "sideFood": "사케동",
+      "sidePrice": "14000"
+    },
+    {
+      "id": "c120",
+      "userId": "admin",
+      "restaurant": "그린웨일",
+      "location": "용인시 처인구 이동읍 어진로 771",
+      "mainFood": "아메리카노",
+      "mainPrice": "7000",
+      "sideFood": "인절미 라떼",
+      "sidePrice": "8500"
+    },
+    {
+      "id": "59f1",
+      "userId": "admin",
+      "restaurant": "kh",
+      "location": "서울시 강남구",
+      "mainFood": "치킨",
+      "mainPrice": "15000",
+      "sideFood": "닭다리",
+      "sidePrice": "7000"
     }
   ]
 }

@@ -42,11 +42,20 @@ const InputBox = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
-`;
+`
+
+const Error = styled.p`
+  font-size: 14px;
+  color: #ff0000;
+  padding: 0;
+  padding-bottom: 10px;
+  margin: 0;
+  font-weight: bold;
+`
 const Div = styled.div`
   width: 90%;
 `;
@@ -103,7 +112,7 @@ const WBtn = styled.button`
 const schema = yup.object().shape({
   userId: yup
     .string()
-    .required('아이디는 필수입니다.')
+    .required('아이디를 입력하지않았습니다.')
     .test('checkDuplication', '이미 사용 중인 아이디입니다.', async (value) => {
       if (!value) return false;
       const res = await axios.get(`http://localhost:3001/users?userId=${value}`);
@@ -112,7 +121,6 @@ const schema = yup.object().shape({
   userPwd: yup.string().required('비밀번호를 입력해주세요.'),
   userName: yup.string().required('이름을 입력해주세요.'),
   age: yup.number().typeError('숫자만 입력해주세요'),
-  email: yup.string().email('올바른 이메일 형식이 아닙니다.').required('이메일을 입력해주세요.'),
 });
 
 function UserAdd() {
@@ -130,14 +138,13 @@ function UserAdd() {
 
   const onSubmit = async (data) => {
     try {
-      // 중복 체크 전에 trigger로 userId 검사
+
       const isUserIdValid = await trigger('userId');
       if (!isUserIdValid) {
         alert(errors.userId?.message || '아이디 중복 검사에 실패했습니다.');
-        return; // 아이디 중복 체크에서 오류가 있으면 가입을 진행하지 않음
+        return;
       }
 
-      // 서버에 회원가입 요청
       await axios.post('http://localhost:3001/users', { ...data, gender });
       alert('회원가입이 완료되었습니다.');
       navigate('/');
@@ -152,9 +159,9 @@ function UserAdd() {
   };
 
   const handleIdCheck = async () => {
-    const isValid = await trigger('userId'); // 중복 체크를 트리거
+    const isValid = await trigger('userId');
     if (isValid) {
-      alert('아이디 중복 검사가 완료되었습니다.');
+      alert('사용가능한 아이디입니다.');
     } else {
       alert(errors.userId?.message || '아이디를 다시 확인해주세요.');
     }
@@ -170,15 +177,16 @@ function UserAdd() {
               <Input {...register('userId')} placeholder="아이디를 입력해주세요" />
               <IdBtn onClick={handleIdCheck}>중복확인</IdBtn>
             </IdInputBox>
-
+            {errors.userId && <Error>{errors.userId.message}</Error>}
             <InputBox>
               <Input type="password" {...register('userPwd')} placeholder="비밀번호를 입력해주세요" />
             </InputBox>
+            {errors.userPwd && <Error>{errors.userPwd.message}</Error>}
 
             <InputBox>
               <Input type="text" {...register('userName')} placeholder="이름을 입력해주세요" />
             </InputBox>
-
+            {errors.userName && <Error>{errors.userName.message}</Error>}
             <InputBox>
               <Input type="number" {...register('age')} placeholder="나이를 입력해주세요" />
             </InputBox>
