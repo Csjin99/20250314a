@@ -1,26 +1,20 @@
 package com.kh.jpa.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.PrePersist;
+import com.kh.jpa.enums.CommonEnums;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import java.time.LocalDateTime;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED) //JPA 스펙상 필수 + 외부 생성 방지
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@DynamicInsert // null이 아닌 필드만 insert
+@DynamicUpdate // 변경된 필드만 update
 public class Notice {
 
     @Id
@@ -34,15 +28,38 @@ public class Notice {
     @Column(name = "NOTICE_CONTENT", length = 200, nullable = false)
     private String noticeContent;
 
-    @Column(name = "CREATE_DATE")
+    @Column(name = "CREATE_DATE", updatable = false)
     private LocalDateTime createDate;
 
-    //공지 : 작성자(N : 1)
+    @Column(name = "MODIFY_DATE")
+    private LocalDateTime modifyDate;
+
+    @Column(length = 1, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CommonEnums.Status status;
+
+    // 작성자: Member (N:1)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "NOTICE_WRITER")
     private Member member;
 
     @PrePersist
-    protected void onCreate() {this.createDate = LocalDateTime.now();}
+    protected void onCreate() {
+        this.createDate = LocalDateTime.now();
+        this.modifyDate = LocalDateTime.now();
+        if (this.status == null) {
+            this.status = CommonEnums.Status.Y;
+        }
+    }
 
+    @PreUpdate
+    protected void onUpdate() {
+        this.modifyDate = LocalDateTime.now();
+    }
+
+    // 공지사항 수정 메서드 예시
+    public void updateNotice(String title, String content) {
+        this.noticeTitle = title;
+        this.noticeContent = content;
+    }
 }

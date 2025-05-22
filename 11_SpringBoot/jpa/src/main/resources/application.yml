@@ -4,7 +4,7 @@ spring:
 
   datasource:
     hikari:
-      jdbc-url: jdbc:h2:tcp://localhost/C:/workspace/11_SpringBoot/jpa/tdb
+      jdbc-url: jdbc:h2:tcp://localhost/C:/csjwork/11_SpringBoot/jpa/tdb
       driver-class-name: org.h2.Driver
       username: sa
       password: 1234
@@ -18,7 +18,7 @@ spring:
       max-request-size: 100MB
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
