@@ -1,13 +1,13 @@
 package com.kh.reactbackend.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -39,6 +39,16 @@ public class Member {
     }
     private Integer age;
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    List<Restaurant> restaurants = new ArrayList<>();
 
+    public void upadteMemberInfo(String userId, String userPwd,String userName, String email, Gender gender, Integer age) {
+        this.userId = userId;
+        this.userPwd = userPwd;
+        this.userName = userName;
+        this.email = email;
+        this.gender = gender;
+        this.age = age;
+    }
 
 }
