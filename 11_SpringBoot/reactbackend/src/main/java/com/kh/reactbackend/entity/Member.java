@@ -1,6 +1,7 @@
 package com.kh.reactbackend.entity;
 
 
+import com.kh.reactbackend.enums.CommonEnums;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -10,9 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicInsert
 @DynamicUpdate
 public class Member {
@@ -33,6 +35,7 @@ public class Member {
     @Column(name = "GENDER", length = 1)
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
 
     public enum Gender {
         M, F

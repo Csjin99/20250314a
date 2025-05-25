@@ -89,7 +89,7 @@ function MainHome() {
         <AddRestaurant onClick={() => navigate('/Mainhome/restaurantAdd')}>맛집추가</AddRestaurant>
       </Header>
       <Container>
-        <ListCard userId={user.userId} search={search} />
+        <ListCard userId={user.user_id} search={search} />
       </Container>
     </>
   );

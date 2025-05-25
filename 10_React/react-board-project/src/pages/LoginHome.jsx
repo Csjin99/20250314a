@@ -99,26 +99,26 @@ function LoginHome() {
 
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3001/users', {
-        params: {
-          userId: data.userId,
-          userPwd: data.userPwd,
-        },
+      const response = await axios.post('http://localhost:8888/api/members/login', {
+        userId: data.userId,
+        userPwd: data.userPwd,
       });
 
-      if (response.data.length > 0) {
-        const user = response.data[0];
+      // 로그인 성공: 200 상태에 객체가 반환됨
+      if (response.status === 200 && response.data) {
+        const user = response.data;
         sessionStorage.setItem('user', JSON.stringify(user));
         toast.success('로그인 성공!');
         setTimeout(() => {
           navigate('/MainHome');
         }, 1000);
-      } else {
-        toast.error('아이디 또는 비밀번호가 틀렸습니다.');
       }
     } catch (err) {
-      console.error(err);
-      toast.error('로그인 중 오류가 발생했습니다.');
+      if (err.response && err.response.status === 401) {
+        toast.error('아이디 또는 비밀번호가 틀렸습니다.');
+      } else {
+        toast.error('로그인 중 오류가 발생했습니다.');
+      }
     } finally {
       setLoading(false);
     }

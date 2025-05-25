@@ -110,16 +110,16 @@ const WBtn = styled.button`
 `;
 
 const schema = yup.object().shape({
-  userId: yup
+  user_id: yup
     .string()
     .required('아이디를 입력하지않았습니다.')
     .test('checkDuplication', '이미 사용 중인 아이디입니다.', async (value) => {
       if (!value) return false;
-      const res = await axios.get(`http://localhost:3001/users?userId=${value}`);
-      return res.data.length === 0;
+      const res = await axios.get(`http://localhost:8888/api/members?userId=${value}`);
+      return res.data === false;
     }),
-  userPwd: yup.string().required('비밀번호를 입력해주세요.'),
-  userName: yup.string().required('이름을 입력해주세요.'),
+  user_pwd: yup.string().required('비밀번호를 입력해주세요.'),
+  user_name: yup.string().required('이름을 입력해주세요.'),
   age: yup.number().typeError('숫자만 입력해주세요'),
 });
 
@@ -127,7 +127,7 @@ function UserAdd() {
   const navigate = useNavigate();
   const [gender, setGender] = useState(null);
 
-  const {
+   const {
     register,
     handleSubmit,
     formState: { errors },
@@ -138,14 +138,13 @@ function UserAdd() {
 
   const onSubmit = async (data) => {
     try {
-
-      const isUserIdValid = await trigger('userId');
+      const isUserIdValid = await trigger('user_id');
       if (!isUserIdValid) {
-        alert(errors.userId?.message || '아이디 중복 검사에 실패했습니다.');
+        alert(errors.user_id?.message || '아이디 중복 검사에 실패했습니다.');
         return;
       }
 
-      await axios.post('http://localhost:3001/users', { ...data, gender });
+      await axios.post('http://localhost:8888/api/members', { ...data, gender });
       alert('회원가입이 완료되었습니다.');
       navigate('/');
     } catch (err) {
@@ -159,11 +158,11 @@ function UserAdd() {
   };
 
   const handleIdCheck = async () => {
-    const isValid = await trigger('userId');
+    const isValid = await trigger('user_id');
     if (isValid) {
       alert('사용가능한 아이디입니다.');
     } else {
-      alert(errors.userId?.message || '아이디를 다시 확인해주세요.');
+      alert(errors.user_id?.message || '아이디를 다시 확인해주세요.');
     }
   };
 
@@ -174,32 +173,29 @@ function UserAdd() {
         <Loginfrom>
           <Div>
             <IdInputBox>
-              <Input {...register('userId')} placeholder="아이디를 입력해주세요" />
+              <Input {...register('user_id')} placeholder="아이디를 입력해주세요" />
               <IdBtn onClick={handleIdCheck}>중복확인</IdBtn>
             </IdInputBox>
-            {errors.userId && <Error>{errors.userId.message}</Error>}
+            {errors.user_id && <Error>{errors.user_id.message}</Error>}
             <InputBox>
-              <Input type="password" {...register('userPwd')} placeholder="비밀번호를 입력해주세요" />
+              <Input type="password" {...register('user_pwd')} placeholder="비밀번호를 입력해주세요" />
             </InputBox>
-            {errors.userPwd && <Error>{errors.userPwd.message}</Error>}
-
+            {errors.user_pwd && <Error>{errors.user_pwd.message}</Error>}
             <InputBox>
-              <Input type="text" {...register('userName')} placeholder="이름을 입력해주세요" />
+              <Input type="text" {...register('user_name')} placeholder="이름을 입력해주세요" />
             </InputBox>
-            {errors.userName && <Error>{errors.userName.message}</Error>}
+            {errors.user_name && <Error>{errors.user_name.message}</Error>}
             <InputBox>
               <Input type="number" {...register('age')} placeholder="나이를 입력해주세요" />
             </InputBox>
-
             <InputBox>
               <Input type="email" {...register('email')} placeholder="이메일을 입력해주세요" />
             </InputBox>
-
             <BtnBox>
-              <MBtn onClick={() => handleGender('남')} selected={gender === '남'}>
+              <MBtn onClick={() => handleGender('M')} selected={gender === 'M'}>
                 남
               </MBtn>
-              <WBtn onClick={() => handleGender('여')} selected={gender === '여'}>
+              <WBtn onClick={() => handleGender('F')} selected={gender === 'F'}>
                 여
               </WBtn>
             </BtnBox>

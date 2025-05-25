@@ -85,16 +85,16 @@ function ListAdd() {
       }
   
       const newData = {
-        userId: sessionUser.userId,
-        restaurant,
+        restaurant_name: restaurant,
         location,
-        mainFood,
-        mainPrice,
-        sideFood,
-        sidePrice
+        main_food: mainFood,
+        main_price: mainPrice ? Number(mainPrice) : null,
+        side_food: sideFood,
+        side_price: sidePrice ? Number(sidePrice) : null,
+        user_id: sessionUser.user_id,
       };
   
-      axios.post('http://localhost:3001/List', newData)
+      axios.post('http://localhost:8888/api/restaurants', newData)
         .then(() => {
           alert("맛집이 추가되었습니다!");
           navigate('/Mainhome');
@@ -102,6 +102,7 @@ function ListAdd() {
         .catch(err => {
           console.error("추가 실패:", err);
           alert("등록 중 오류가 발생했습니다.");
+          console.log(sessionUser.user_id);
         });
     };
   

@@ -108,9 +108,9 @@ const WBtn = styled.button`
 `;
 
 const schema = yup.object().shape({
-  userId: yup.string().required('아이디는 필수입니다.'),
-  userPwd: yup.string().required('비밀번호는 필수입니다.'),
-  userName: yup.string().required('이름은 필수입니다.'),
+  user_id: yup.string().required('아이디는 필수입니다.'),
+  user_pwd: yup.string().required('비밀번호는 필수입니다.'),
+  user_name: yup.string().required('이름은 필수입니다.'),
 });
 
 function MyPage() {
@@ -126,15 +126,16 @@ function MyPage() {
   });
 
   useEffect(() => {
-    const sessionUser = sessionStorage.getItem('user');
+  const sessionUser = sessionStorage.getItem('user');
     if (sessionUser) {
       const user = JSON.parse(sessionUser);
-      setValue('userId', user.userId);
-      setValue('userPwd', user.userPwd);
-      setValue('userName', user.userName);
+      setValue('user_id', user.user_id);
+      setValue('user_pwd', user.user_pwd);
+      setValue('user_name', user.user_name);
       setValue('age', user.age);
       setValue('email', user.email);
-      setGender(user.gender);
+      setValue('gender', user.gender); // ✅ 꼭 필요
+      setGender(user.gender); // ✅ 버튼 표시용
     }
   }, [setValue]);
 
@@ -148,10 +149,10 @@ function MyPage() {
     data.gender = gender;
 
     const sessionUser = JSON.parse(sessionStorage.getItem('user'));
-    const userId = sessionUser.id;
+    const userId = sessionUser.user_id;
 
     try {
-      const response = await axios.put(`http://localhost:3001/users/${userId}`, data);
+      const response = await axios.put(`http://localhost:8888/api/members/${userId}`, data);
       if (response.status === 200) {
         alert('회원 정보가 성공적으로 수정되었습니다.');
         sessionStorage.setItem('user', JSON.stringify(response.data));
@@ -172,17 +173,17 @@ function MyPage() {
         <Loginfrom>
           <Div>
             <IdInputBox>
-              <Input {...register('userId')} placeholder="아이디를 입력해주세요" />
+              <Input {...register('user_id')} placeholder="아이디를 입력해주세요" />
             </IdInputBox>
               {errors.userId && <Error>{errors.userId.message}</Error>}
 
             <InputBox>
-              <Input type="password" {...register('userPwd')} placeholder="비밀번호를 입력해주세요" />
+              <Input type="password" {...register('user_pwd')} placeholder="비밀번호를 입력해주세요" />
             </InputBox>
             {errors.userPwd && <Error>{errors.userPwd.message}</Error>}
 
             <InputBox>
-              <Input type="text" {...register('userName')} placeholder="이름을 입력해주세요" />
+              <Input type="text" {...register('user_name')} placeholder="이름을 입력해주세요" />
               
             </InputBox>
             {errors.userName && <Error>{errors.userName.message}</Error>}
@@ -196,10 +197,10 @@ function MyPage() {
             </InputBox>
 
             <BtnBox>
-              <MBtn onClick={() => handleGender('남')} selected={gender === '남'}>
+              <MBtn onClick={() => handleGender('M')} selected={gender === 'M'}>
                 남
               </MBtn>
-              <WBtn onClick={() => handleGender('여')} selected={gender === '여'}>
+              <WBtn onClick={() => handleGender('F')} selected={gender === 'F'}>
                 여
               </WBtn>
             </BtnBox>

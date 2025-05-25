@@ -22,16 +22,14 @@ const Div = styled.div`
   font-size: 20px;
 `;
 
-function ListCard({ search }) {
+function ListCard({ userId, search }) {
   const [listData, setListData] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const sessionUser = sessionStorage.getItem('user');
-    if (sessionUser) {
-      const { userId } = JSON.parse(sessionUser);
+    if (userId) {
       axios
-        .get(`http://localhost:3001/List?userId=${userId}`)
+        .get(`http://localhost:8888/api/restaurants/user/${userId}`)
         .then((res) => {
           setListData(res.data);
         })
@@ -39,9 +37,13 @@ function ListCard({ search }) {
           console.error('List 가져오기 실패:', err);
         });
     }
-  }, []);
+  }, [userId]);
 
-  const filteredData = listData.filter((item) => item.mainFood.includes(search) || item.sideFood.includes(search));
+  const filteredData = listData.filter(
+    (item) =>
+      item.main_food.toLowerCase().includes(search.toLowerCase()) ||
+      item.side_food.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
@@ -49,17 +51,17 @@ function ListCard({ search }) {
         <p>등록된 식당이 없습니다.</p>
       ) : (
         filteredData.map((item, index) => (
-          <MainBox key={index} onClick={() => navigate(`/MainHome/${item.restaurant}`)}>
+          <MainBox key={index} onClick={() => navigate(`/MainHome/${item.restaurant_no}`)}>
             <Boxing>
               <Div>
                 <p>
-                  <strong>식당명:</strong> {item.restaurant}
+                  <strong>식당명:</strong> {item.restaurant_name}
                 </p>
                 <p>
                   <strong>위치:</strong> {item.location}
                 </p>
                 <p>
-                  <strong>메인 메뉴:</strong> {item.mainFood}
+                  <strong>메인 메뉴:</strong> {item.main_food}
                 </p>
               </Div>
             </Boxing>

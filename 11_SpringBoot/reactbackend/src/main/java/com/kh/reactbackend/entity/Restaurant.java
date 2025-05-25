@@ -1,8 +1,5 @@
 package com.kh.reactbackend.entity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -14,10 +11,10 @@ public class Restaurant {
 
     @Id
     @GeneratedValue
-    @Column(name= "RESTAURNAT_NO")
+    @Column(name= "RESTAURANT_NO")
     private long restaurantNo;
 
-    @Column(name="RESTAURNAT_NAME")
+    @Column(name="RESTAURANT_NAME")
     private String restaurantName;
 
     @Column(name = "LOCATION")
@@ -34,4 +31,10 @@ public class Restaurant {
 
     @Column(name = "SIDE_PRICE")
     private Integer sidePrice;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RESTAURANT_USER")
+    private Member member;
+
 }
