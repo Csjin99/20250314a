@@ -134,8 +134,8 @@ function MyPage() {
       setValue('user_name', user.user_name);
       setValue('age', user.age);
       setValue('email', user.email);
-      setValue('gender', user.gender); // ✅ 꼭 필요
-      setGender(user.gender); // ✅ 버튼 표시용
+      setValue('gender', user.gender);
+      setGender(user.gender);
     }
   }, [setValue]);
 
@@ -173,7 +173,7 @@ function MyPage() {
         <Loginfrom>
           <Div>
             <IdInputBox>
-              <Input {...register('user_id')} placeholder="아이디를 입력해주세요" />
+              <Input {...register('user_id')} placeholder="아이디를 입력해주세요" readOnly />
             </IdInputBox>
               {errors.userId && <Error>{errors.userId.message}</Error>}
 
