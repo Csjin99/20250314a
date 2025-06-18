@@ -31,7 +31,7 @@ const theme = {
     '4xl': '36px',
     '5xl': '48px',
   },
-  fontWeights0: {
+  fontWeights: {
     thin: 100,
     light: 300,
     regular: 400,
