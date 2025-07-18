@@ -18,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2yLJKCujuqJDRlOYk12wGq5XKJ4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -33,7 +33,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/finalProject/BackEnd",
+    "last_opened_file_path": "C:/csjwork/13_SporinBoot",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "advanced.settings",
     "vue.rearranger.settings.migration": "true"
@@ -66,6 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1749607853384</updated>
       <workItem from="1749607854579" duration="217000" />
+      <workItem from="1750734921173" duration="22000" />
     </task>
     <servers />
   </component>
